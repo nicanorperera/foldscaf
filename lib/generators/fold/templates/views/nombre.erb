@@ -1,7 +1,9 @@
 <%%- clase ||= 'elemento' -%>
 <%%= content_tag :tr, :class => clase, :id => "elementos_#{<%= @singular %>.id}" do %>
   <td><%%= <%= @singular %>.<%= @identificador %> %></td>
-  <td><%%= content_tag :i, '',:class => "handle icon-move", :title => "Mantenga click y arrastre para reordenar" %></td>
-  <td><%%= link_to 'Editar'  , <%= @edit_path %>(<%= @singular %>), :class => 'btn btn-mini' if can? :editar, <%= @singular %> %></td>
-  <td><%%= link_to "Eliminar", <%= @singular_path %>(<%= @singular %>), :method => :delete, :confirm => t("confirmacion"), :remote => true, :class => 'btn btn-mini btn-danger' %></td>
+  <td>
+  <%= "<%= content_tag :i, '',:class => 'handle icon-move', :title => 'Mantenga click y arrastre para reordenar' %\>" if @con_orden %>
+  <%%= link_to 'Editar'  , <%= @edit_path %>(<%= @singular %>), :class => 'btn btn-mini' if can? :editar, <%= @singular %> %>
+  <%%= link_to "Eliminar", <%= @singular_path %>(<%= @singular %>), :method => :delete, :confirm => t("confirmacion"), :remote => true, :class => 'btn btn-mini btn-danger' %>
+  </td>
 <%% end %> 

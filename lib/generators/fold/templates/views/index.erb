@@ -1,0 +1,19 @@
+<div class="page-header">
+  <h1><%= @classes %></h1>
+</div>
+
+<nav class="well">
+  <button class="btn" data-toggle="collapse" data-target="#mini"><%%= icono('zoom-in') %> Mostrar formulario</button>
+  <%%= link_to icono('plus', :blanco)+" Agregar <%= @singular %> ", <%= @new_path %>, :class => 'btn btn-primary' %>
+</nav>
+
+<%%= render "mini_form", :<%= @singular %> => @<%= @singular %>, :url => <%= @plural_path %> %>
+
+<table id="ordenable" class="table table-striped ordenable">
+  <%%= thead(:<%= @identificador %>) %>
+  <tbody>
+    <%%= render @<%= @plural %> %>
+  </tbody>
+</table>
+
+<%= "<%= hidden_field_tag :url, #{@reordenar_path} , :class => :url %\>" if @con_orden %>

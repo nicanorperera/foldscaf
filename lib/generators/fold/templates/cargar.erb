@@ -1,0 +1,8 @@
+<%- atributos = @atributos.select {|x| x.ejemplo }.collect {|a| ":#{a.nombre} => #{a.ejemplo}" } -%>
+namespace :cargar do
+  task :<%= @plural %> => :environment do
+  <%- 10.times do-%>
+    <%= @class %>.create! <%= atributos.join(', ') %>
+  <%- end -%>
+  end
+end

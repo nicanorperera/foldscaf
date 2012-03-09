@@ -1,0 +1,52 @@
+class Admin::<%= @classes %>Controller < Admin::AdminController
+  <%= "include Sortable" if @con_orden %>
+  load_and_authorize_resource
+
+  def index
+    @<%= @singular %> = <%= @class %>.new
+  end
+
+  def new
+  end
+  
+  def create
+    @<%= @singular %> = <%= @class %>.new params[:<%= @singular %>]
+    @<%= @singular %>.save!
+    notice = mensaje
+    respond_to do |format|
+      format.html { redirect_to <%= @plural_path %>, notice: mensaje }
+      format.js { @elemento = @<%= @singular %> }
+    end
+  end
+
+  def edit
+  end
+  
+  def update
+    @<%= @singular %>.update_attributes! params[:<%= @singular %>]
+    redirect_to <%= @edit_path %>(@<%= @singular %>), notice: mensaje
+  end
+
+  def destroy
+    @id = @<%= @singular %>.id
+    @<%= @singular %>.eliminar!
+    notice = mensaje
+    respond_to do |format|
+      format.html { redirect_to <%= @plural_path %>, notice: mensaje }
+      format.js
+    end
+  end
+  
+  private
+
+  def mensaje
+    flash.now.notice = t("notice.#{action_name}")
+  end
+  
+  <%- if @con_orden -%>
+  def sort_coleccion
+    <%= @class %>.all
+  end
+  <%- end -%>
+  
+end

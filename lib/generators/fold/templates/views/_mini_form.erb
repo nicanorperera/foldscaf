@@ -1,0 +1,4 @@
+<%%= mini_form_for <%= @singular %>, :url => url, :remote => true do |f| %>
+  <%%= f.input :<%= @identificador %>, :placeholder => '<%= @identificador %>' %>
+  <%%= f.button :submit, :name => nil, :disable_with => t("espere") %>
+<%%- end -%>

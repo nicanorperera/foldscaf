@@ -1,0 +1,6 @@
+<%%= simple_form_for <%= @singular %>, :url => url, :html => { :class => 'form-vertical' } do |f| %>
+<%- @atributos.each do |a| -%>
+  <%%= f.<%= a.clase == :references ? :association : :input %> :<%= a.nombre %> %>
+<%- end -%>
+  <div class="controls"><%%= f.button :submit, :name => nil, :disable_with => t("espere") %></div>
+<%%- end -%>

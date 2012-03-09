@@ -1,0 +1,18 @@
+Description:
+    Generador Scaffold-Like adaptado a las necesidades de Xaver.
+
+Example:
+    rails generate fold Thing
+
+    This will create:
+        app/controllers/admin/things_controller.rb
+        app/models/thing.rb
+        app/helpers/thing_helper.rb
+
+        app/views/admin/_form.rb
+        app/views/admin/_mini_form.rb
+        app/views/admin/_thing.rb
+        app/views/admin/edit.rb
+        app/views/admin/index.rb
+        app/views/admin/show.rb
+

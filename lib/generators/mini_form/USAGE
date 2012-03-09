@@ -1,0 +1,8 @@
+Description:
+    Instala los componentes necesarios para que funcione mini_form.
+
+Example:
+    rails generate mini_form
+
+    This will create:
+        lib/mini_form.rb

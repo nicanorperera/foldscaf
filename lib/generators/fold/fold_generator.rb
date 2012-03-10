@@ -41,7 +41,6 @@ class FoldGenerator < Rails::Generators::Base
     template 'model.erb'     , "app/models/#{@singular}.rb"
     template 'migration.erb' , "db/migrate/#{fecha}_create_#{@plural}.rb"
     template 'controller.erb', "app/controllers/admin/#{@plural}_controller.rb"
-    template 'helper.erb', "app/helpers/#{@plural}_helper.rb"
     
     %w[_form _mini_form edit index new].each do |action| 
     template "views/#{action}.erb", "app/views/admin/#{@plural}/#{action}.html.erb"

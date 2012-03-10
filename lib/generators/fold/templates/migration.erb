@@ -15,5 +15,8 @@ class Create<%= @classes %> < ActiveRecord::Migration
       
       t.timestamps
     end
+    <%- if @con_slug -%>
+    add_index :<%= @plural %>, :slug, :unique => true
+    <%- end -%>    
   end
 end

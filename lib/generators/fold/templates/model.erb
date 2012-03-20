@@ -1,24 +1,16 @@
 class <%= @class %> < ActiveRecord::Base
-  <%= 'before_create :set_orden' if @con_orden %>
-  <%- if @con_slug -%>
+<%- if @con_slug -%>
   extend FriendlyId
-  friendly_id :<%= @identificador %>, use: :slugged
-  <%- end -%>
-  <%- atributos_con_referencia.each do |a| -%>
+  friendly_id
+<%- end -%>
+<%- atributos_con_referencia.each do |a| -%>
   belongs_to :<%= a.nombre %>
-  <%- end -%>
-   
+<%- end -%>
   default_scope where(:es_activo => true)<%= ".order('#{@plural}.orden')" if @con_orden %>
 
   def eliminar!
-    update_attributes :es_activo => false
+    update_attributes! :es_activo => false
   end
 
   alias_attribute :to_s, :<%= @identificador %>
-  <%- if @con_orden -%>  
-  private
-  def set_orden
-    self.orden = self.id
-  end
-  <%- end -%>
 end

@@ -2,17 +2,17 @@ class Create<%= @classes %> < ActiveRecord::Migration
   def change
     create_table :<%= @plural %> do |t|
       <%- @atributos.each do |a| -%>
-      t.<%= a.clase %> :<%= a.nombre %> <%= ", :default => #{a.default}" if (a.default && a.ejemplo) %>
+      t.<%= a.clase %> :<%= a.nombre %><%= ", :default => #{a.default}" if (a.default && a.ejemplo) %>
       <%- end -%>
-        
+      
       <%- if @con_slug -%>
       t.string :slug
-      <%- end -%>    
+      <%- end -%>
       <%- if @con_orden -%>
       t.integer :orden
       <%- end -%>    
+
       t.boolean :es_activo, :default => true
-      
       t.timestamps
     end
     <%- if @con_slug -%>

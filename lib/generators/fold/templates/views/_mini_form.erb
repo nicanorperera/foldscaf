@@ -1,4 +1,4 @@
 <%%= mini_form_for <%= @singular %>, :url => url, :remote => true do |f| %>
-  <%%= f.input :<%= @identificador %>, :placeholder => '<%= @identificador %>' %>
-  <%%= f.button :submit, :name => nil, :disable_with => t("espere") %>
-<%%- end -%>
+  <%%= f.input :<%= @identificador %>, :placeholder => '<%= @identificador.humanize %>' %>
+  <%%= f.button :submit, :name => nil, :disable_with => t("espere"), :class => 'btn btn-primary' %>
+<%% end %>

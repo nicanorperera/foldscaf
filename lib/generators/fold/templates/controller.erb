@@ -1,6 +1,8 @@
 class Admin::<%= @classes %>Controller < Admin::AdminController
-  <%= "include Sortable" if @con_orden %>
   load_and_authorize_resource
+<%- if @con_orden -%>
+  include Sortable
+<%- end -%>
 
   def index
     @<%= @singular %> = <%= @class %>.new
@@ -13,8 +15,9 @@ class Admin::<%= @classes %>Controller < Admin::AdminController
     @<%= @singular %> = <%= @class %>.new params[:<%= @singular %>]
     @<%= @singular %>.save!
     notice = mensaje
+
     respond_to do |format|
-      format.html { redirect_to <%= @plural_path %>, notice: mensaje }
+      format.html { redirect_to <%= @plural_path %>, notice: notice }
       format.js { @elemento = @<%= @singular %> }
     end
   end
@@ -31,8 +34,9 @@ class Admin::<%= @classes %>Controller < Admin::AdminController
     @id = @<%= @singular %>.id
     @<%= @singular %>.eliminar!
     notice = mensaje
+
     respond_to do |format|
-      format.html { redirect_to <%= @plural_path %>, notice: mensaje }
+      format.html { redirect_to <%= @plural_path %>, notice: notice }
       format.js
     end
   end
@@ -42,9 +46,11 @@ class Admin::<%= @classes %>Controller < Admin::AdminController
   def mensaje
     flash.now.notice = t("notice.#{action_name}")
   end
-  <%- if @con_orden -%>
+<%- if @con_orden -%>
+
   def sort_coleccion
     <%= @class %>.all
   end
-  <%- end -%>
+<%- end -%>
+
 end

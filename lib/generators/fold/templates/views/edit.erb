@@ -4,7 +4,6 @@
 
 <nav class="well">
   <%%= link_to "Volver", <%= @plural_path %>, :class => 'btn' %>
-  <%%= link_to "Ver", <%= @singular_path %>(@<%= @singular %>), :class => 'btn' %>
 </nav>
 
 <%%= render "form", :<%= @singular %> => @<%= @singular %>, :url => <%=  @singular_path %>(@<%= @singular %>) %>

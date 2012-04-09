@@ -1,6 +1,6 @@
 <%%= content_tag :tr, :id => "elementos_#{<%= @singular %>.id}" do %>
   <td><%%= <%= @singular %>.<%= @identificador %> %></td>
-  <td>
+  <td style="text-align:right;">
 <%- if @con_orden -%>
     <%%= content_tag :i, '', :class => [:handle, :"icon-move"], :title => 'Mantenga click y arrastre para reordenar' %>
 <%- end -%>

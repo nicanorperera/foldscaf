@@ -1,1 +1,9 @@
+<div class="page-header">
+  <h1>Agregar <%= @class %></h1>
+</div>
+
+<nav class="well">
+  <%%= link_to "Volver", <%= @plural_path %>, :class => 'btn' %>
+</nav>
+
 <%%= render "form", :<%= @singular %> => @<%= @singular %>, :url => <%=  @plural_path %> %>

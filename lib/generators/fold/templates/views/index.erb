@@ -9,7 +9,7 @@
 
 <%%= render "mini_form", :<%= @singular %> => @<%= @singular %>, :url => <%= @plural_path %> %>
 
-<%%= content_tag :table, :id => :listado, :class => [:table, :"table-striped", :ordenable] do %>
+<%%= content_tag :table, :id => @<%= @singular %>.class.name.tableize, :class => [:table, :"table-striped", :ordenable] do %>
   <%%= thead :<%= @identificador %> %>
   <%%= content_tag :tbody, render(@<%= @plural %>) %>
 <%% end %>

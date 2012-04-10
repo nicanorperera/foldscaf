@@ -1,7 +1,7 @@
 class <%= @class %> < ActiveRecord::Base
 <%- if @con_slug -%>
   extend FriendlyId
-  friendly_id
+  friendly_id :<%= @identificador %>
 <%- end -%>
 <%- atributos_con_referencia.each do |a| -%>
   belongs_to :<%= a.nombre %>

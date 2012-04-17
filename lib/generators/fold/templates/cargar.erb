@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 <%- atributos = @atributos.select {|x| x.ejemplo }.collect {|a| ":#{a.nombre} => #{a.ejemplo}" } -%>
 namespace :cargar do
   task :<%= @plural %> => :environment do

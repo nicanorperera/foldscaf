@@ -1,9 +1,15 @@
 <div class="page-header">
-  <h1>Agregar <%= @class %></h1>
+  <div class="row">
+    <div class="span6"><h1>Agregar <%= @class %></h1></div>
+    <div class="span3" style="text-align:right;">
+      <%%= link_to icono('arrow-left', :blanco) + ' Volver', <%= @plural_path %>, :class => 'btn btn-primary btn-large' %>
+    </div>
+  </div>
 </div>
 
-<nav class="well">
-  <%%= link_to "Volver", <%= @plural_path %>, :class => 'btn' %>
-</nav>
+<%%= content_tag :table, :id => nombre_tabla(<%= @class %>), :class => [:table, :"table-striped", :ordenable] do %>
+  <%%= thead :<%= @identificador %> %>
+  <%%= content_tag :tbody, render(@<%= @plural %>) %>
+<%% end %>
 
-<%%= render "form", :<%= @singular %> => @<%= @singular %>, :url => <%=  @plural_path %> %>
+<%%= render "form", :<%= @singular %> => @<%= @singular %>, :url => <%=  @plural_path %>, :remote => true %>

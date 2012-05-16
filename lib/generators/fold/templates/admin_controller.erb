@@ -2,14 +2,16 @@
 class Admin::<%= @classes %>Controller < Admin::AdminController
   load_and_authorize_resource
 <%- if @con_orden -%>
-  include Sortable
+  include Ordenable
 <%- end -%>
 
   def index
-    @<%= @singular %> = <%= @class %>.new
+    @q = <%= @class %>.search params[:q]
+    @<%= @plural %> = @q.relation.page(params[:page]).per(50)
   end
 
   def new
+    @<%= @plural %> = <%= @class %>.last(5)
   end
   
   def create

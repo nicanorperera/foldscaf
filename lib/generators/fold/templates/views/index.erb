@@ -1,18 +1,23 @@
 <div class="page-header">
-  <h1><%= @classes %></h1>
+  <div class="row">
+    <div class="span6"><h1><%= @classes %></h1></div>
+    <div class="span3" style="text-align:right;"><%%= link_to icono('plus', :blanco) + " Agregar <%= @singular %>", <%= @new_path %>, :class => 'btn btn-primary btn-large' %></div>
+  </div>
 </div>
 
-<nav class="well">
-  <%%= button_tag icono('zoom-in') + " Mostrar formulario", :class => :btn, :data => { :toggle => :collapse, :target => '#mini'} %>
-  <%%= link_to icono('plus', :blanco) + " Agregar <%= @singular %>", <%= @new_path %>, :class => 'btn btn-primary' %>
-</nav>
+<%%= simple_form_for @q, :as => :q, :url => <%= @plural_path %>, :method => :get do |f| %>
+  <%%= f.input :<%= @identificador %>_contains, :placeholder => '<%= @identificador.humanize %>', :required => false, :wrapper => :mini, :input_html => { :class => 'input-large search-query' }, :autofocus => true %>
+  <%%= f.button :submit, "Buscar", :name => nil, :disable_with => t("espere"), :class => 'btn btn-primary' %>
+<%% end %>
 
-<%%= render "mini_form", :<%= @singular %> => @<%= @singular %>, :url => <%= @plural_path %> %>
+<%%= paginate @<%= @plural %>, :theme => :bootstrap %>
 
-<%%= content_tag :table, :id => @<%= @singular %>.class.name.tableize, :class => [:table, :"table-striped", :ordenable] do %>
+<%%= content_tag :table, :id => nombre_tabla(<%= @class %>), :class => [:table, :"table-striped", :ordenable] do %>
   <%%= thead :<%= @identificador %> %>
   <%%= content_tag :tbody, render(@<%= @plural %>) %>
 <%% end %>
+
+<%%= paginate @<%= @plural %>, :theme => :bootstrap %>
 
 <%- if @con_orden -%>
 <%%= hidden_field_tag :url, <%= @reordenar_path %>, :class => :url %>

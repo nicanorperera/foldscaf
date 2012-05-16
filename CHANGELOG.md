@@ -1,3 +1,11 @@
+## v1.0.0
+* Eliminación de mini_form generator
+* Eliminación de vista _mini_form.erb
+* Index ahora tiene buscador y paginación
+* Controller ahora usa Ordenable en lugar de Sortable
+* Controller adaptado a buscador
+* Botones importantes ahora a la derecha del titulo
+
 ## v0.0.7
 * Mejorado boton para Ordenar
 * Id de tablas ahora corresponde al tableize de la clase del elemento, en lugar de a :listado (esto permite trabajar con multiples tablas).

@@ -44,16 +44,10 @@ class Admin::<%= @classes %>Controller < Admin::AdminController
     end
   end
   
-  private
-
-  def mensaje
-    flash.now.notice = t("notice.#{action_name}")
-  end
 <%- if @con_orden -%>
-
+  private
   def sort_coleccion
     <%= @class %>.all
   end
 <%- end -%>
-
 end

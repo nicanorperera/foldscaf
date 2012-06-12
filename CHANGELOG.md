@@ -1,3 +1,6 @@
+## v1.0.1
+* Eliminado método mensaje de admin_controller. (Está en ApplicationController de XaverTemplate >= 1.0.1)
+
 ## v1.0.0
 * Eliminación de mini_form generator
 * Eliminación de vista _mini_form.erb

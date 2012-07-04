@@ -5,6 +5,7 @@
     <%%= link_to icono('move', :black) + " Mover", "#", :class => 'btn btn-mini handle', :title => 'Mantenga click y arrastre para reordenar' %>
 <%- end -%>
     <%%= link_to 'Editar', <%= @edit_path %>(<%= @singular %>), :class => 'btn btn-mini' if can? :update, <%= @singular %> %>
-    <%%= link_to "Eliminar", <%= @singular_path %>(<%= @singular %>), :method => :delete, :confirm => t("confirmacion"), :remote => true, :class => 'btn btn-mini btn-danger' if can? :destroy, <%= @singular %> %>
+    <%%= link_to 'Eliminar', <%= @singular_path %>(<%= @singular %>), :method => :delete, :data => { :confirm => t('confirmacion') }, :remote => true, :class => 'btn btn-mini btn-danger' 
+if <%= @singular %>.se_puede_eliminar? && can?(:destroy, <%= @singular %>) %>
   </td>
 <%% end %>

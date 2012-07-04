@@ -1,3 +1,9 @@
+## v1.0.2
+* Eliminar! pasa a ser destroy (nuevo formato)
+* Headers de Index, New y Edit con nuevo formato.
+* disable_with y confirm ahora con :data => {}
+* default_scope con nuevo formato
+
 ## v1.0.1
 * Eliminado método mensaje de admin_controller. (Está en ApplicationController de XaverTemplate >= 1.0.1)
 

@@ -35,7 +35,7 @@ class Admin::<%= @classes %>Controller < Admin::AdminController
 
   def destroy
     @id = @<%= @singular %>.id
-    @<%= @singular %>.eliminar!
+    @<%= @singular %>.destroy
     notice = mensaje
 
     respond_to do |format|

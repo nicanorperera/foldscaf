@@ -1,8 +1,8 @@
 <div class="page-header">
-  <div class="row">
-    <div class="span6"><h1><%= @classes %></h1></div>
-    <div class="span3" style="text-align:right;"><%%= link_to icono('plus', :blanco) + " Agregar <%= @singular %>", <%= @new_path %>, :class => 'btn btn-primary btn-large' %></div>
-  </div>
+  <nav class="pull-right">
+    <%%= link_to icono('plus', :blanco) + " Agregar <%= @singular %>", <%= @new_path %>, :class => 'btn btn-primary btn-large' %>
+  </nav>
+  <h1><%= @classes %></h1>
 </div>
 
 <%%= simple_form_for @q, :as => :q, :url => <%= @plural_path %>, :method => :get do |f| %>

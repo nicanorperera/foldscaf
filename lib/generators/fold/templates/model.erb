@@ -7,10 +7,18 @@ class <%= @class %> < ActiveRecord::Base
 <%- atributos_con_referencia.each do |a| -%>
   belongs_to :<%= a.nombre %>
 <%- end -%>
-  default_scope where(:es_activo => true)<%= ".order('#{@plural}.orden')" if @con_orden %>
+  default_scope -> { where{es_activo.eq true}<%= ".order('#{@plural}.orden')" if @con_orden %> }
 
-  def eliminar!
-    update_attributes! :es_activo => false
+  def se_puede_eliminar?
+    true
+  end
+  
+  def destroy
+    if se_puede_eliminar?
+      run_callbacks :destroy do
+        update_attribute :es_activo, false
+      end
+    end
   end
 
   alias_attribute :to_s, :<%= @identificador %>

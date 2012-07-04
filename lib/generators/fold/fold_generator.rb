@@ -40,9 +40,10 @@ class FoldGenerator < Rails::Generators::Base
   def body
     template 'model.erb'     , "app/models/#{@singular}.rb"
     template 'migration.erb' , "db/migrate/#{fecha}_create_#{@plural}.rb"
-    template 'controller.erb', "app/controllers/admin/#{@plural}_controller.rb"
+    template 'controller.erb', "app/controllers/#{@plural}_controller.rb"
+    template 'admin_controller.erb', "app/controllers/admin/#{@plural}_controller.rb"
     
-    %w[_form _mini_form edit index new].each do |action| 
+    %w[_form edit index new].each do |action| 
     template "views/#{action}.erb", "app/views/admin/#{@plural}/#{action}.html.erb"
     end
     template "views/nombre.erb", "app/views/admin/#{@plural}/_#{@singular}.html.erb"

@@ -1,0 +1,53 @@
+# -*- encoding : utf-8 -*-
+class Admin::<%= @classes %>Controller < Admin::AdminController
+  load_and_authorize_resource
+<%- if @con_orden -%>
+  include Ordenable
+<%- end -%>
+
+  def index
+    @q = <%= @class %>.search params[:q]
+    @<%= @plural %> = @q.relation.page(params[:page]).per(50)
+  end
+
+  def new
+    @<%= @plural %> = <%= @class %>.last(5)
+  end
+  
+  def create
+    @<%= @singular %> = <%= @class %>.new params[:<%= @singular %>]
+    @<%= @singular %>.save!
+    notice = mensaje
+
+    respond_to do |format|
+      format.html { redirect_to <%= @plural_path %>, notice: notice }
+      format.js { @elemento = @<%= @singular %> }
+    end
+  end
+
+  def edit
+  end
+  
+  def update
+    @<%= @singular %>.update_attributes! params[:<%= @singular %>]
+    redirect_to <%= @edit_path %>(@<%= @singular %>), notice: mensaje
+  end
+
+  def destroy
+    @id = @<%= @singular %>.id
+    @<%= @singular %>.eliminar!
+    notice = mensaje
+
+    respond_to do |format|
+      format.html { redirect_to <%= @plural_path %>, notice: notice }
+      format.js
+    end
+  end
+  
+<%- if @con_orden -%>
+  private
+  def sort_coleccion
+    <%= @class %>.all
+  end
+<%- end -%>
+end

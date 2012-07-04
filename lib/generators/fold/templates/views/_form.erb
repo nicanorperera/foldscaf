@@ -1,4 +1,4 @@
-<%%= simple_form_for <%= @singular %>, :url => url, :html => { :class => 'form-horizontal' } do |f| %>
+<%%= simple_form_for <%= @singular %>, :url => url, :remote => remote, :html => { :class => 'form-horizontal' } do |f| %>
 <%- @atributos.each do |a| -%>
   <%%= f.<%= a.clase == :references ? :association : :input %> :<%= a.nombre %> %>
 <%- end -%>

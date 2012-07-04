@@ -1,3 +1,6 @@
+## v1.0.3
+* Fix error al mostrar objetos en index.
+
 ## v1.0.2
 * Eliminar! pasa a ser destroy (nuevo formato)
 * Headers de Index, New y Edit con nuevo formato.

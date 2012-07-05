@@ -1,3 +1,6 @@
+## v1.0.4
+* Fix. Ahora funciona para Rails > 3.2.4
+
 ## v1.0.3
 * Fix error al mostrar objetos en index.
 

@@ -51,18 +51,4 @@ class Atributo
     end
   end
 
-  # Este metodo es usado solo para testear.
-  # TODO: Eliminar metodo.
-  def show
-
-    n1 = ANCHO - @nombre.size
-    n2 = ANCHO - @clase.size
-    n3 = @default ? ANCHO - @default.size : ANCHO
-
-    s1 = ' ' * n1
-    s2 = ' ' * n2
-    s3 = ' ' * n3
-
-    "#{@nombre}#{s1}#{@clase}#{s2}#{@default}#{s3}#{@opciones}\n"
-  end
 end

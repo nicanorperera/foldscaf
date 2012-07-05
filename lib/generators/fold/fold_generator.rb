@@ -29,8 +29,7 @@ class FoldGenerator < Rails::Generators::Base
     @reordenar_path = "reordenar_admin_#{@plural}_path"
 
     @atributos = []
-    
-    args.each do |arg|
+    arguments.first.each do |arg|
       @atributos << Atributo.new(arg)
     end
     @identificador = @atributos.first.nombre

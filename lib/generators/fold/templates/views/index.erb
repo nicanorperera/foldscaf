@@ -6,7 +6,7 @@
 </div>
 
 <%%= simple_form_for @q, :as => :q, :url => <%= @plural_path %>, :method => :get do |f| %>
-  <%%= f.input :<%= @identificador %>_contains, :placeholder => '<%= @identificador.humanize %>', :required => false, :wrapper => :mini, :input_html => { :class => 'input-large search-query' }, :autofocus => true %>
+  <%%= f.input :<%= @identificador %>_contains, :placeholder => '<%= @identificador.humanize %>', :required => false, :autofocus => true %>
   <%%= f.button :submit, "Buscar", :name => nil, :disable_with => t("espere"), :class => 'btn btn-primary' %>
 <%% end %>
 
@@ -16,8 +16,6 @@
   <%%= thead :<%= @identificador %> %>
   <%%= content_tag :tbody, render(@<%= @plural %>) %>
 <%% end %>
-
-<%%= paginate @<%= @plural %>, :theme => :bootstrap %>
 
 <%- if @con_orden -%>
 <%%= hidden_field_tag :url, <%= @reordenar_path %>, :class => :url %>
